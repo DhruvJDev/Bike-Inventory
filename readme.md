@@ -140,7 +140,7 @@ http://localhost/Bike-Inventory/
 | ---------------------------- | ----------------------------------- |
 | ![Homepage](assets/home.png) | Homepage displaying available bikes |
 | ![Add Form](assets/add.png)  | Form for adding new bike records    |
-| ![[update.png]]              | MySQL database storing bike details |
+| ![Update](assets/update.png) | MySQL database storing bike details |
 
 ---
 ## 🔮 Future Enhancements
