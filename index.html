@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Bike Inventory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>🏍️ Hero Bike Inventory</h1>
+        <nav>
+            <button onclick="showSection('view', this)">📊 View Stock</button>
+            <button onclick="showSection('add', this)">➕ Add Stock</button>
+            <button onclick="showSection('subtract', this)">➖ Subtract Stock</button>
+            <button onclick="showSection('update', this)">✏️ Update Stock</button>
+            <button onclick="showSection('new', this)">🆕 New Model</button>
+            <button onclick="showSection('delete', this)">🗑️ Delete Stock</button>
+            <button onclick="showSection('search', this)">🔍 Search</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- View Stock -->
+        <section id="view" class="section active inline">
+            <div>
+                <div class="header">
+                    <h2 class="margin">📊 Current Bike Stock</h2>
+                </div>
+                <div class="download-buttons">
+                    <button class="red" onclick="downloadPDF()">📄 Download PDF</button>
+                    <button class="green" onclick="downloadExcel()">📊 Download Excel</button>
+                </div>
+            </div>
+            <table id="bikeTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Model</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <!-- Add Stock -->
+        <section id="add" class="section">
+            <h2>➕ Add Stock</h2>
+            <form onsubmit="addStock(event)">
+                <label for="addId">Bike ID:</label>
+                <input type="number" id="addId" placeholder="Enter Bike ID" required>
+
+                <label for="addQuantity">Quantity to Add:</label>
+                <input type="number" id="addQuantity" placeholder="Quantity to Add" min="1" required>
+
+                <button type="submit">Add Stock</button>
+            </form>
+        </section>
+
+        <!-- Subtract Stock -->
+        <section id="subtract" class="section">
+            <h2>➖ Subtract Stock</h2>
+            <form onsubmit="subtractStock(event)">
+                <label for="subId">Bike ID:</label>
+                <input type="number" id="subId" placeholder="Enter Bike ID" required>
+
+                <label for="subQuantity">Quantity to Subtract:</label>
+                <input type="number" id="subQuantity" placeholder="Quantity to Subtract" min="1" required>
+
+                <button type="submit">Subtract Stock</button>
+            </form>
+        </section>
+
+        <!-- Update Stock -->
+        <section id="update" class="section">
+            <h2>✏️ Update Total Quantity</h2>
+            <form onsubmit="updateStock(event)">
+                <label for="updateId">Bike ID:</label>
+                <input type="number" id="updateId" placeholder="Enter Bike ID" required>
+
+                <label for="updateQuantity">New Quantity:</label>
+                <input type="number" id="updateQuantity" placeholder="New Total Quantity" min="0" required>
+
+                <button type="submit">Update Stock</button>
+            </form>
+        </section>
+
+        <!-- Add New Model -->
+        <section id="new" class="section">
+            <h2>🆕 Add New Bike Model</h2>
+            <form onsubmit="addNewModel(event)">
+                <label for="newModel">Model Name:</label>
+                <input type="text" id="newModel" placeholder="Enter Model Name" required>
+
+                <label for="newQuantity">Quantity:</label>
+                <input type="number" id="newQuantity" placeholder="Enter Quantity" min="0" required>
+
+                <button type="submit">Add New Model</button>
+            </form>
+        </section>
+
+        <!-- Delete Stock -->
+        <section id="delete" class="section">
+            <h2>🗑️ Delete Stock</h2>
+            <form onsubmit="deleteStock(event)">
+                <label for="deleteId">Bike ID:</label>
+                <input type="number" id="deleteId" placeholder="Enter Bike ID" required>
+                <button type="submit">Delete Stock</button>
+            </form>
+        </section>
+
+        <!-- Search -->
+        <section id="search" class="section">
+            <h2>🔍 Search Bike Model</h2>
+            <form onsubmit="searchStock(event)">
+                <label for="searchQuery">Enter ID or Model:</label>
+                <input type="text" id="searchQuery" placeholder="Enter ID or Model Name" required>
+                <button type="submit">Search</button>
+            </form>
+            <table id="searchTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Model</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Hero Bike Inventory System | Developed by <strong>Dhruv Jindal</strong></p>
+    </footer>
+
+    <!-- jsPDF & autotable -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+    <!-- SheetJS for Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <!-- Your script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
